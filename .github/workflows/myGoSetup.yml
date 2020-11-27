@@ -10,12 +10,12 @@ jobs:
   build:
     runs-on: ubuntu-16.04
     steps:
-      - name: Check out calc.go Codes
+      - name: Check out calculator codes
         uses: actions/checkout@v2
-      - name: Setup go using Go 1.15
+      - name: Setup go using Go version 1.13.7
         uses: actions/setup-go@v2
         with:
-          go-version: '1.15'
+          go-version: '1.13.7'
       - name: Run version check
         run: go version
       - name: Install Dependencies
@@ -26,10 +26,10 @@ jobs:
         run: |
           go get github.com/franela/goblin
       - if: ${{success()}}
-        name: Test Go Goblin
+        name: Test using Go Goblin
         run: |
           go test -v
-          go test -v | go2xunit > report.xml            
+          go test -v | go2xunit > report.xml    
       - if: ${{failure()}}
         name: Create Issues
         uses: nashmaniac/create-issue-action@v1.1
@@ -39,3 +39,9 @@ jobs:
           assignees: ${{github.actor}}
           labels: worflow-failed
           body: Workflow failed for commit ${{github.sha}} @ ${{github.ref}}
+      - name: Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1.5
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          files: report.xml
