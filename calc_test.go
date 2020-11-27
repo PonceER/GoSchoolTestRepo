@@ -41,5 +41,3 @@ func TestCalc(t *testing.T) {
 		})
 	})
 }
-
-//Use “go get github.com/franela/goblin”
