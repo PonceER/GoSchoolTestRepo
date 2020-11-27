@@ -8,7 +8,7 @@ on:
     
 jobs:
   build:
-    runs-on: ubuntu-16.04
+    runs-on: Ubuntu-20.04
     steps:
       - name: Check out calculator codes
         uses: actions/checkout@v2
