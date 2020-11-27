@@ -10,12 +10,12 @@ jobs:
   build:
     runs-on: ubuntu-16.04
     steps:
-      - name: Check out Code
+      - name: Check out calc.go Codes
         uses: actions/checkout@v2
-      - name: Setup go
+      - name: Setup go using Go 1.15
         uses: actions/setup-go@v2
         with:
-          go-version: '1.13.7'
+          go-version: '1.15'
       - name: Run version check
         run: go version
       - name: Install Dependencies
