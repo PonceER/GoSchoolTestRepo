@@ -3,14 +3,9 @@ name: Go CICD
 on:
   push:
     branches: [main]
-    paths:
-      - README.md
-      - .github/workflows/table_of_contents.yml
   pull_request:
     branches: [main]
     paths:
-      - README.md
-      - .github/workflows/table_of_contents.yml
     
 jobs:
   build:
@@ -51,19 +46,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           files: report.xml
-      - name: Generate table of content
-        id: generate
-        uses: LeChatErrant/table-of-contents-action@v1
-      - name: Commit
-        if: steps.generate.outputs.changes == 'true'
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add README.md
-          git commit -m "doc: README.md table of contents updated [AUTO]"
-      - name: Push changes
-        if: steps.generate.outputs.changes == 'true'
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+
