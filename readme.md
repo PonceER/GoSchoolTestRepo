@@ -18,7 +18,7 @@ Addon | Capablility
 3.4. publish-unit-test-result-action@v1.5 --To read XML and display test results
 -- simulated build failure, see https://github.com/PonceER/MyTestRepo/issues/2
 
--- From PonceER/MyTestRepo --> Add file --> /.github/workflows/MyGoSetup.yml
+-- From PonceER/MyTestRepo --> Add file --> /.github/workflows/myGoSetup.yml
    1. Event to trigger script -- push and pull_request on [main] branches
    2. Virtual machine OS -- Ubuntu-20.04
    3. Checkout go (i.e. calc) codes
@@ -30,6 +30,12 @@ Addon | Capablility
  
 Activity #2(C): Release/Deployment using YML and GitHub Actions
 Add onto the YAML file created in activity #2(B) and include the relevant tools to create the release/ deployment capabilities of your choice to the automation.
+-- From PonceER/MyTestRepo --> Add file --> /.github/workflows/myRelease.yml
+   1. Event to trigger script -- create and tags
+   2. Virtual machine OS -- Ubuntu-20.04
+   3. Checkout go (i.e. calc) codes
+   4. Validate and Release using docker://goreleaser/goreleaser:latest
 
 A simple tag triggered method will be shown.
 
+-- From PC command line run git tag v2.0, git push --tag
