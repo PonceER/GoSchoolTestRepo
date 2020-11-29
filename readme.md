@@ -16,6 +16,7 @@ Addon | Capablility
 3.2. github.com/franela/goblin -- To enable test using Goblin
 3.3. github.com/tebeka/go2xunit -- To convert report from test to XML
 3.4. publish-unit-test-result-action@v1.5 --To read XML and display test results
+-- simulated build failure, see https://github.com/PonceER/MyTestRepo/issues/2
 
 -- From PonceER/MyTestRepo --> Add file --> /.github/workflows/MyGoSetup.yml
    1. Event to trigger script -- push and pull_request on [main] branches
@@ -25,6 +26,10 @@ Addon | Capablility
    5. Install addons/dependencies (see above Addon lists)
   
  -- local repo push the following files: calc.go, calc_test.go to https://github.com/PonceER/MyTestRepo.git
+    see https://github.com/PonceER/MyTestRepo/commit/4b7de3a2a1b6b8011977c5588d36a60ce94f1b67
  
- 
+Activity #2(C): Release/Deployment using YML and GitHub Actions
+Add onto the YAML file created in activity #2(B) and include the relevant tools to create the release/ deployment capabilities of your choice to the automation.
+
+A simple tag triggered method will be shown.
 
