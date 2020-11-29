@@ -9,6 +9,7 @@ on:
     
 jobs:
   build:
+    name: Build testing
     # 2. Virtual machine OS
     runs-on: Ubuntu-20.04
     steps:
