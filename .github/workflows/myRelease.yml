@@ -12,7 +12,7 @@ jobs:
     runs-on: Ubuntu-20.04
     steps:
       - name: Checkout go (i.e calc) codes
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Validate GO releaser configuration with argument check
         uses: docker://goreleaser/goreleaser:latest
         with:
