@@ -1,4 +1,4 @@
-name: YAML in CICD activity #2(B)
+name: Build -- CICD activity #2(B)
 
 on:
   # 1. Event to trigger script
