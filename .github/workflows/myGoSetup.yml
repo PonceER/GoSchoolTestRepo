@@ -1,17 +1,18 @@
-name: Go CICD
+name: YAML in CICD activity #2(B)
 
 on:
+  # 1. Event to trigger script
   push:
     branches: [main]
   pull_request:
     branches: [main]
-    paths:
     
 jobs:
   build:
+    # 2. Virtual machine OS
     runs-on: Ubuntu-20.04
     steps:
-      - name: Check out calculator codes
+      - name: Checkout go (i.e calc) codes
         uses: actions/checkout@v2
       - name: Setup go using Go version 1.13.7
         uses: actions/setup-go@v2
@@ -19,11 +20,13 @@ jobs:
           go-version: '1.13.7'
       - name: Run version check
         run: go version
-      - name: Install Dependencies
-        id: InstallDeps
+      - name: Install addons and dependencies
+        id: InstallAddonAndDependencies
+        # 3.3. For converting report from test to XML
         run: |
           go get github.com/tebeka/go2xunit
       - if: ${{success()}}
+         # 3.2. For testing using Goblin
         run: |
           go get github.com/franela/goblin
       - if: ${{success()}}
@@ -32,7 +35,8 @@ jobs:
           go test -v
           go test -v | go2xunit > report.xml    
       - if: ${{failure()}}
-        name: Create Issues
+        name: Raise Issue(s)
+         # 3.1. To raise notification issues
         uses: nashmaniac/create-issue-action@v1.1
         with:
           title: Build Failed
@@ -41,6 +45,7 @@ jobs:
           labels: worflow-failed
           body: Workflow failed for commit ${{github.sha}} @ ${{github.ref}}
       - name: Unit Test Results
+        # 3.4. To raise notifications in issues
         uses: EnricoMi/publish-unit-test-result-action@v1.5
         if: always()
         with:
