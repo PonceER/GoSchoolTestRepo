@@ -1,0 +1,25 @@
+name: Release -- CICD activity #2(C)
+on:
+  # 1. Event to trigger script
+  create:
+    tags:
+      - v*
+
+jobs:
+  release:
+    name: Release on GitHub
+    # 2. Virtual machine OS
+    runs-on: Ubuntu-20.04
+    steps:
+      - name: Checkout go (i.e calc) codes
+        uses: actions/checkout@v1
+      - name: Validate GO releaser configuration with argument check
+        uses: docker://goreleaser/goreleaser:latest
+        with:
+          args: check
+      - name: Release Go release into GItHub with argumant release
+        uses: docker://goreleaser/goreleaser:latest
+        with:
+          args: release
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
