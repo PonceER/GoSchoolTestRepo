@@ -39,3 +39,9 @@ Add onto the YAML file created in activity #2(B) and include the relevant tools 
 A simple tag triggered method will be shown.
 
 -- From PC command line run git tag v2.0, git push --tag
+
+
+Activity: TDD
+See https://github.com/PonceER/WebCalculator/issues/1 for the TDD simulation test and develop with collaboration with gavinerh83.
+
+
